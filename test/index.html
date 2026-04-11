@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Antoine</title>
+    <link rel="icon" href="favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="theme-toggle.css">
+    <!-- Font awesome import -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#home" class="logo">Hennetier Antoine</a>
+
+      <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="#home" class="active">Accueil</a>
+        <a href="#aboutme">Profil</a>
+        <a href="#project">Projets</a>
+        <a href="#all_skills">Skills</a>
+        <a href="#veille"> Veille Informatique</a>
+        <a href="#outils"> Mes Outils</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
+        <div class="toggle-track">
+          <i class="bx bx-moon icon-moon"></i>
+          <i class="bx bx-sun icon-sun"></i>
+        </div>
+        <div class="toggle-thumb"></div>
+      </button>
+    </header>
+
+    <section class="home" id="home">
+      <div class="home-img">
+        <img src="favicon.png" alt="" />
+      </div>
+
+      <div class="home-content">
+        <h1 data-aos="fade-left">
+          Hi <i class="fa-solid fa-hand" style="color: #2eb0f0"></i
+          ><span>,</span>
+        </h1>
+        <h3 class="typing-text" data-aos="fade-left">I'm <span></span></h3>
+        <p data-aos="fade-left">
+          Je suis actuellement en quête d'une carrière passionnante en tant que Pentester.
+          Je recherche à mettre à profit mes compétences, ma fiabilité et mes capacités à 
+          résoudre des problèmes pour sécuriser les systèmes informatiques. 
+          Mon objectif est de contribuer activement à la cybersécurité avec dynamisme et rigueur.
+        </p>
+
+        <div class="social-icon" data-aos="fade-up" data-aos-duration="1000">
+          <a href="https://www.linkedin.com/in/antoine-hennetier-092492327"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+          <a href="https://github.com/dashboard"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+        </div>
+
+        <div class="home-button" data-aos="zoom-in" data-aos-duration="1000">
+          <a href="cvPortfolio.pdf">
+            <button class="button button2">
+              <p>Mon CV</p>
+            </button>
+          </a>
+          <a href="#contact">
+            <button class="button button2">
+              <p>Contact</p>
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About ME -->
+    <section class="aboutme" id="aboutme">
+      <div>
+        <div class="container">
+          <div class="row">
+            <div class="about_col2">
+              <h1 class="sub_title">A Propos de moi</h1>
+              <p>
+                Passionné par les nouvelles technologies depuis de nombreuses
+                années, je suis animé par une réelle volonté de rester à la
+                pointe des innovations informatiques et de contribuer activement
+                à des projets ambitieux et stimulants.
+              </p>
+              <div class="tab_titles">
+                <p class="tab_links active-link" onclick="opentab('skills')">
+                  Compétences
+                </p>
+                <p class="tab_links" onclick="opentab('parcours')">Parcours</p>
+                <p class="tab_links" onclick="opentab('experiences')">
+                  Experiences
+                </p>
+              </div>
+              <div class="tab_contents active-tab" id="skills">
+                <ul>
+                  <li>
+                    <span> Réseaux</span><br />
+                    Routeur, Switch, Firewall
+                  </li>
+                  <li>
+                    <span> systèmes</span><br />
+                    Active Directory, logiciel de ticketing, Reverse proxy, Machines virtuels
+                  </li>
+                  <li>
+                    <span>Cybersécurité</span><br />
+                    Exploitation de vulnérabilités, outils spécialisés, Test d'intrusion wifi, Analyse de risque, Audit
+                  </li>
+                  <li>
+                    <span> Web developpement </span><br />
+                    Réalisation de site responsive en HTML/CSS
+                  </li>
+                </ul>
+                <a href="#all_skills">
+                  <div class="arrow"></div>
+                  <p>Tout mes skills</p>
+                </a>
+              </div>
+              <div class="tab_contents" id="parcours">
+                <ul>
+                   <li>
+                    <span>2026 - 2029</span><br />
+                    Licence et Master en alternance de 3 ans au
+                    <a href="" class="learn-more"
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <span>2024 - 2026</span><br />
+                    BTS SIO option SISR en alternance de 2 ans au
+                    <a href="https://www.credit-agricole.fr/ca-pca/particulier.html" class="learn-more"
+                      >Crédit Agricole</a
+                    >
+                  </li>
+                  <li>
+                    <span>2021 - 2024</span><br />
+                    Baccalauréat Général Option Maths, Numérique Science Informatique
+                    <a href="https://www.lycee-eucalyptus.fr/" class="learn-more">
+                      Lycée les Eucalyptus</a
+                    >
+                  </li>
+                  <li>
+                    <span>2023 - 2024</span><br />
+                    Préparation Militaire Marine 
+                    <a href="https://lamarinerecrute.gouv.fr/trouver-sa-voie/initiation-avoir-une-premiere-experience/preparation-militaire-marine" class="learn-more"
+                      >Préparation Militaire</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="tab_contents" id="experiences">
+                <ul>
+                  <li>
+                    <span>Certifications </span><br /><br />
+                    <ul>
+                      <a href="CS50.pdf">CS50 Harvard</a>
+                    </ul>
+                    <ul>
+                      <a href="pre.pdf">Pre securité</a>
+                    </ul>
+                    <ul>
+                      <a href="Cybersécurité_101.pdf">Cybersécurité 101</a>
+                    </ul>
+                  </li>
+                  <li>
+                    <span>Diplomes</span><br /><br />
+                    <ul>BTS SIO Option SISR</ul>
+                    <ul>Baccalauréat Général Option Math, Numérique Science Informatique</ul>
+                  </li>
+                  <li>
+                    <span>Formations</span><br />
+                    <ul>
+                      <a href="pre.pdf">Feuille de compétence</a>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      var tablinks = document.getElementsByClassName("tab_links");
+      var tabcontents = document.getElementsByClassName("tab_contents");
+
+      function opentab(tabname) {
+        for (tablink of tablinks) {
+          tablink.classList.remove("active-link");
+        }
+        for (tabcontent of tabcontents) {
+          tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+      }
+    </script>
+
+    <section class="services" id="project">
+      <h2 class="heading">Projets</h2>
+
+      <div class="service-container">
+        <div class="single-service" data-aos="zoom-in-up">
+          <div class="content">
+            <span class="icon">
+              <i class="fa-solid fa-user-secret"></i>
+            </span>
+            <h3 class="title">Root-me</h3>
+            <p class="description">
+              Plateforme d'entraînement en cybersécurité orientée CTF et défis 
+              techniques, axée sur le hacking éthique, le pentesting et la résolution
+              de vulnérabilités. Permet de renforcer des compétences pratiques en 
+              exploitation, reverse engineering, web et systèmes à travers des 
+              challenges progressifs.
+              <br><br>
+            </p>
+            <a href="https://www.root-me.org/antoine-700576?lang=fr#ec681c17133304375dda5c1f813e6b80" class="learn-more"
+              >En savoir plus...</a>
+          </div>
+          <span class="circle-before"></span>
+        </div>
+
+        <div class="single-service" data-aos="zoom-in-up">
+          <div class="content">
+            <span class="icon">
+              <i class="fas fa-laptop-code"></i>
+            </span>
+            <h3 class="title">GNEX</h3>
+            <p class="description">
+              Étude et conception d'une infrastructure réseaux et systèmes pour une entreprise 
+              technologique multi-sites. Analyse des besoins, définition de l'architecture 
+              (VLAN, routage inter-VLAN, services systèmes, virtualisation, haute disponibilité) 
+              et proposition d'une solution performante, fiable et évolutive, adaptée aux usages 
+              métier.
+            </p>
+            <a href="gnex.html" class="learn-more">En savoir plus...</a>
+          </div>
+          <span class="circle-before"></span>
+        </div>
+
+        <div class="single-service" data-aos="zoom-in-up">
+          <div class="content">
+            <span class="icon">
+              <i class="fa-solid fa-building"></i>
+            </span>
+            <h3 class="title">Active Directory</h3>
+            <p class="description">
+              Conception et déploiement d'une infrastructure Active Directory 
+              multi-sites sous Windows Server, virtualisée sur ESXi avec réplication 
+              pour assurer la haute disponibilité. Mise en œuvre de l'administration 
+              des comptes, des GPO, de la maintenance opérationnelle et de la 
+              documentation projet (Gantt, RACI, procédures techniques).
+            </p>
+            <a href="active-directory.html" class="learn-more" id="all_skills">En savoir plus...</a>
+          </div>
+          <span class="circle-before"></span>
+        </div>
+
+        <div class="single-service" data-aos="zoom-in-up">
+          <div class="content">
+            <span class="icon">
+              <i class="fa-solid fa-gamepad"></i>
+            </span>
+            <h3 class="title">TryHackMe</h3>
+            <p class="description">
+              Plateforme d'apprentissage en cybersécurité basée sur des 
+              laboratoires pratiques et interactifs (CTF, machines virtuelles),
+              couvrant le pentesting, le SOC, le cloud et la sécurité offensive/
+              défensive. Utilisée pour développer des compétences opérationnelles
+              via des scénarios réels et des parcours guidés alignés sur les métiers
+              de la cybersécurité.
+            </p>
+            <a href="https://tryhackme.com/p/Xray6" class="learn-more">En savoir plus...</a>
+          </div>
+          <span class="circle-before"></span>
+        </div>
+
+        <div class="single-service" data-aos="zoom-in-up">
+          <div class="content">
+            <span class="icon">
+              <i class="fas fa-chart-pie"></i>
+            </span>
+            <h3 class="title">Methodologie Pentest</h3>
+            <p class="description">
+              Rédaction d'une documentation détaillée sur la méthodologie d'un test 
+              d'intrusion, couvrant l'ensemble du cycle de vie du pentest : cadrage, 
+              collecte d'informations, exploitation, post-exploitation et reporting.
+              Formalisation des bonnes pratiques et des standards (OWASP, PTES) afin 
+              d'assurer une approche reproductible, structurée et orientée risques.
+            </p>
+            <a href="methodopent.pdf" class="learn-more">En savoir plus...</a>
+          </div>
+          <span class="circle-before"></span>
+        </div>
+
+        <div class="single-service" data-aos="zoom-in-up">
+          <div class="content">
+            <span class="icon">
+              <i class="fa-solid fa-toilet-portable"></i>
+            </span>
+            <h3 class="title">Pentest Wi-Fi</h3>
+            <p class="description">
+              Rédaction et mise en œuvre d'un test de pénétration Wi-Fi WPA2 sous 
+              Kali Linux, incluant la capture de handshake et l'analyse hors-ligne 
+              des mécanismes d'authentification. Maîtrise des outils aircrack-ng, 
+              du mode monitor, de l'injection de trames et de l'analyse des 
+              architectures réseau sans fil.
+              <br><br>
+            </p>
+            <a href="wifi.pdf" class="learn-more">En savoir plus...</a>
+          </div>
+          <span class="circle-before"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <h2 class="heading">Skills</h2>
+      <div class="container">
+        <div class="row" id="skillsContainer">
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="reseaux.png" />
+              <span>Administation Réseaux</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="adminsysone.png" />
+              <span>Administation Systèmes</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="cyber.png" />
+              <span>Cybersécurité</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="AD.png" />
+              <span>Active Directory</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="dns.png" />
+              <span>DNS</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="DHCP.png" />
+              <span>DHCP</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="server.png" />
+              <span>Routage</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="virtualbox.png" />
+              <span>Virtualisation</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="sociale.png" />
+              <span>Docker</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="plate-forme-linux.png" />
+              <span>Linux</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="les-fenetres.png" />
+              <span>Windows</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="logo-mac-os.png" />
+              <span>Mac OS</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="html.png" />
+              <span>HTML</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="css.png" />
+              <span>CSS</span>
+            </div>
+          </div>
+          <div class="bar" data-aos="flip-left">
+            <div class="info">
+              <img src="python.png" />
+              <span>Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Veille et patrimoine -->
+    <section>
+      <div class="tech-header" id="veille">
+        <h1 class="heading">Veille Technologique & Veille Technologique Ciblé</h1>
+      </div>
+
+      <div class="tech-container">
+        <!-- Veille Technologique Column -->
+        <div class="tech-column">
+          <h2>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png"
+              class="tech-icon"
+              style="filter: hue-rotate(180deg) saturate(2)"
+              alt="Veille"
+            />
+            Veille Technologique
+          </h2>
+          <p class="tech-description">
+            <br>
+            La veille informatique, est le fait de rester informé des dernières
+            actualités, des menaces de cybersécurité, ou des innovations
+            technologiques. Pour çela, on utilise des outils qui permettent de
+            centraliser les informations provenant de plusieurs sources.
+            <br><br><br>
+          </p>
+          <div class="tech-card">
+            <span>
+              <img src="googleone.png" class="tech-icon" alt="Google Alerts" />
+              Google Alerts
+            </span>
+            <div class="tech-tag">Mots-clés</div>
+          </div>
+          <div class="tech-card">
+            <span>
+              <img src="feedly.png" class="tech-icon" alt="Feedly" />
+              Feedly
+            </span>
+            <div class="tech-tag">Flux RSS</div>
+          </div>
+          <div class="tech-card">
+            <span>
+              <img src="x.png" class="tech-icon" alt="Twitter" />
+              Twitter/X
+            </span>
+            <div class="tech-tag">Réseaux sociaux</div>
+          </div>
+          <div class="tech-card">
+            <span>
+              <img src="reddit.png" class="tech-icon" style="filter: hue-rotate(20deg)" alt="Reddit" />
+              Reddit
+            </span>
+            <div class="tech-tag">Communautés</div>
+          </div>
+          <div class="tech-card">
+            <span>
+              <img src="zataz.png" class="tech-icon" alt="Zataz" />
+              Zataz
+            </span>
+            <div class="tech-tag">Cyberveille</div>
+          </div>
+        </div>
+
+        <!-- Veille Ciblée Column -->
+        <div class="tech-column">
+          <h2>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png"
+              class="tech-icon"
+              style="filter: hue-rotate(220deg)"
+              alt="Veille"
+            />
+            Veille Technologique Ciblé
+          </h2>
+          <p class="tech-description">
+            <br>
+            Dans un contexte où les vulnérabilités logicielles (CVE) sont découvertes 
+            et exploitées plus vite que jamais, les organisations doivent renforcer leur 
+            sécurité sans pour autant freiner leurs opérations. L'essor de l'IA et de 
+            l'automatisation offre aujourd'hui de nouvelles opportunités pour détecter, 
+            analyser et corriger ces failles de manière proactive.
+          </p>
+          <div class="tech-card">
+            <span>
+              <img src="connect.png" class="tech-icon" alt="IT Connect" />
+              IT Connect
+            </span>
+            <div class="tech-tag">Sites d'actualités</div>
+          </div>
+          <div class="tech-card">
+            <span>
+              <img src="anssi.png" class="tech-icon" alt="ANSSI" />
+              ANSSI
+            </span>
+            <div class="tech-tag">Référence Cybersécurité</div>
+          </div>
+          <div class="tech-card">
+            <span>
+              <img src="cnil.png" class="tech-icon" alt="CNIL" />
+              CNIL
+            </span>
+            <div class="tech-tag">Référence Cybersécurité</div>
+          </div>
+          <div class="tech-card">
+            <span>
+              <img src="I-TRACING.png" class="tech-icon" alt="I-Tracing" />
+              I-Tracing
+            </span>
+            <div class="tech-tag">Blog Cybersécurité</div>
+          </div>
+          <div class="tech-card">
+            <span>
+              <img src="intrinsec.png" class="tech-icon" alt="Intrinsec" />
+              Intrinsec
+            </span>
+            <div class="tech-tag">Blog Cybersécurité</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Résumé Veille -->
+      <div class="tech-column">
+        <h2>
+          <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" class="tech-icon" alt="Veille" />
+          Résumé Veille Technologique Ciblée
+        </h2>
+        <div class="tech-content-box">
+          <p class="tech-description">
+            Avec l'augmentation des failles de sécurité et leur exploitation rapide, 
+            les protections classiques ne sont plus suffisantes et peuvent ralentir 
+            les systèmes. Ce projet explore comment l'intelligence artificielle et 
+            l'automatisation peuvent détecter et bloquer ces failles rapidement, tout 
+            en minimisant l'impact sur les utilisateurs. L'étude montre que l'analyse 
+            du comportement des systèmes et des réseaux permet de repérer des activités 
+            anormales, et que la réponse automatique aux menaces réduit le temps 
+            d'intervention. Ces méthodes combinées à une supervision humaine assurent 
+            une protection efficace et rapide, préparant la cybersécurité à un futur où 
+            l'homme et la machine travaillent ensemble.
+          </p>
+          <div class="tech-button-box">
+            <a href="https://docs.google.com/spreadsheets/d/1KQ4R7UDa0UlzjJIlZMLckLLw4BgvhJlL/edit"
+              target="_blank"
+              class="btn-tech">
+              Accéder à la veille
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mes Outils -->
+    <section class="outils" id="outils">
+      <div class="container mx-auto px-4">
+        <h2 class="heading">Mes Outils</h2>
+
+        <!-- ✅ MODIFIÉ : flex Tailwind remplacé par outils-inner (CSS natif responsive) -->
+        <div class="outils-inner">
+
+          <!-- Virtualisation et Conteneurs -->
+          <div class="category-card bg-[#121212] rounded-xl shadow-lg flex flex-col">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-[#2eb0f0] border-b-4 border-[#2eb0f0] pb-3 flex items-center">
+              <i class="fas fa-server mr-3"></i> Virtualisation et Conteneurs
+            </h2>
+            <div class="grid gap-4 flex-grow">
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="proxmox_logo.png" alt="Proxmox" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Proxmox</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Virtualisation</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="vmware.png" alt="VMware" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">VMware</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Virtualisation</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="virtualbox.png" alt="VirtualBox" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">VirtualBox</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Virtualisation</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="sociale.png" alt="Docker" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Docker</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Conteneurs</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="exegol.png" alt="Exegol" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Exegol</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Pentest</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Développement et Collaboration -->
+          <div class="category-card bg-[#121212] rounded-xl shadow-lg flex flex-col">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-[#2eb0f0] border-b-4 border-[#2eb0f0] pb-3 flex items-center">
+              <i class="fas fa-code mr-3"></i> Développement et Collaboration
+            </h2>
+            <div class="grid gap-4 flex-grow">
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="vscode.png" alt="VSCode" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">VSCode</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">IDE</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="github.png" alt="GitHub" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">GitHub</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Code</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="sublimetext.svg" alt="Sublime Text" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Sublime Text</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Editeur de texte</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="powershell.png" alt="Powershell" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Powershell</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Automatisation</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="google.png" alt="Google Suite" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Google Suite</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Collaboration</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cybersécurité -->
+          <div class="category-card bg-[#121212] rounded-xl shadow-lg flex flex-col">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-[#2eb0f0] border-b-4 border-[#2eb0f0] pb-3 flex items-center">
+              <i class="fas fa-shield-alt mr-3"></i> Cybersécurité
+            </h2>
+            <div class="grid gap-4 flex-grow">
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="nmap.png" alt="Nmap" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Nmap</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Reconnaissance</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="metasploit.png" alt="Metasploit" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Metasploit</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Exploit</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="burp.png" alt="Burp Suite" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Burp Suite</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Pénétration Web</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="rootme.png" alt="Root-me" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Root-me</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">CTF</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="tryhackme.png" alt="TryHackMe" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">TryHackMe</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Apprentissage</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Administrateur Réseaux -->
+          <div class="category-card bg-[#121212] rounded-xl shadow-lg flex flex-col">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-[#2eb0f0] border-b-4 border-[#2eb0f0] pb-3 flex items-center">
+              <i class="fas fa-network-wired mr-3"></i> Administrateur Réseaux
+            </h2>
+            <div class="grid gap-4 flex-grow">
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="cisco.png" alt="Cisco" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Cisco</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Configuration</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="putty.png" alt="Putty" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Putty</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Accès SSH</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="storm.png" alt="Stormshield" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Stormshield</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Pare-feu</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="packet.png" alt="Cisco Packet Tracer" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Cisco Packet Tracer</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Apprentissage</span>
+              </div>
+              <div class="skill2 p-4 flex items-center gap-4 text-lg bg-[#000000] text-white rounded-lg">
+                <img src="wireshark.png" alt="Wireshark" class="w-12 h-12 flex-shrink-0" />
+                <span class="flex-grow min-w-0">Wireshark</span>
+                <span class="text-xs bg-blue-500 text-white rounded-full px-3 py-1.5 whitespace-nowrap flex-shrink-0">Analyse Réseaux</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- fin outils-inner -->
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="row" id="cv">
+          <div class="contact-left">
+            <h1 class="sub-title">Contact</h1>
+            <p>
+              <i class="fa-solid fa-paper-plane"></i>anto.hennetier@gmail.com
+            </p>
+            <div class="social-icon">
+              <a href="https://www.linkedin.com/in/antoine-hennetier-092492327"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+              <a href="https://github.com/dashboard"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+            </div>
+            <button class="btn-cv">
+              <a href="cvPortfolio.pdf" download="cvPortfolio.pdf">Télécharger mon CV</a>
+            </button>
+          </div>
+          <div class="contact-right">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="social">
+        <a href="https://www.linkedin.com/in/antoine-hennetier-092492327"
+          ><i class="fa-brands fa-linkedin-in"></i
+        ></a>
+        <a href="https://github.com/dashboard"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+      </div>
+      <p class="copyright">© Copyright 2026 | Hennetier Antoine</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="theme-toggle.js"></script>
+  </body>
+</html>

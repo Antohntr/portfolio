@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Directory - Infrastructure Entreprise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <style>
+
+        :root {
+            --bg:           #0a0a0a;
+            --bg-card:      #121212;
+            --bg-card2:     rgba(46, 176, 240, 0.05);
+            --border:       rgba(46, 176, 240, 0.2);
+            --border-hover: rgba(46, 176, 240, 0.4);
+            --text:         #e0e0e0;
+            --text-muted:   rgba(255, 255, 255, 0.7);
+            --text-soft:    rgba(255, 255, 255, 0.8);
+            --text-faint:   rgba(255, 255, 255, 0.6);
+            --accent:       #2eb0f0;
+            --shadow:       rgba(0, 0, 0, 0.5);
+            --shadow-card:  rgba(0, 0, 0, 0.3);
+            --table-hover:  rgba(46, 176, 240, 0.05);
+            --stat-bg:      rgba(46, 176, 240, 0.1);
+            --tag-bg:       rgba(46, 176, 240, 0.2);
+            --link-bg:      rgba(46, 176, 240, 0.1);
+        }
+
+        body.light-mode {
+            --bg:           #f0f5fb;
+            --bg-card:      #ffffff;
+            --bg-card2:     rgba(14, 143, 212, 0.04);
+            --border:       rgba(14, 143, 212, 0.2);
+            --border-hover: rgba(14, 143, 212, 0.45);
+            --text:         #0f172a;
+            --text-muted:   #475569;
+            --text-soft:    #334155;
+            --text-faint:   #64748b;
+            --accent:       #0e8fd4;
+            --shadow:       rgba(0, 0, 0, 0.08);
+            --shadow-card:  rgba(0, 0, 0, 0.06);
+            --table-hover:  rgba(14, 143, 212, 0.04);
+            --stat-bg:      rgba(14, 143, 212, 0.08);
+            --tag-bg:       rgba(14, 143, 212, 0.12);
+            --link-bg:      rgba(14, 143, 212, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box;
+            transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease; }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); min-height: 100vh; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+        /* TOGGLE */
+        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 9999; display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 28px; background: rgba(46,176,240,0.12); border: 2px solid rgba(46,176,240,0.4); border-radius: 50px; cursor: pointer; overflow: hidden; padding: 0; }
+        .theme-toggle:hover { box-shadow: 0 0 14px rgba(46,176,240,0.5); }
+        .toggle-track { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; pointer-events: none; }
+        .toggle-track i { font-size: 13px; line-height: 1; }
+        .icon-moon { color: #2eb0f0; opacity: 1; transform: rotate(0deg); }
+        .icon-sun  { color: #f59e0b; opacity: 0.35; transform: rotate(20deg); }
+        .toggle-thumb { position: absolute; width: 22px; height: 22px; background: #2eb0f0; border-radius: 50%; left: 2px; pointer-events: none; z-index: 2; box-shadow: 0 2px 8px rgba(46,176,240,0.5); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.35s, box-shadow 0.3s; }
+        body.light-mode .theme-toggle { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.45); }
+        body.light-mode .theme-toggle:hover { box-shadow: 0 0 14px rgba(245,158,11,0.4); }
+        body.light-mode .toggle-thumb { transform: translateX(25px); background: #f59e0b; box-shadow: 0 2px 8px rgba(245,158,11,0.5); }
+        body.light-mode .icon-moon { opacity: 0.3; transform: rotate(-20deg); }
+        body.light-mode .icon-sun  { opacity: 1; transform: rotate(0deg); }
+
+        /* BACK BTN */
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--link-bg); color: var(--accent); text-decoration: none; border-radius: 50px; margin-bottom: 30px; border: 1px solid var(--border); }
+        .back-btn:hover { background: rgba(46,176,240,0.2); transform: translateX(-5px); box-shadow: 0 0 20px rgba(46,176,240,0.3); }
+
+        /* HEADER */
+        .project-header { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 40px var(--shadow); }
+        .project-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #2eb0f0 0%, #1a8bc7 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(46,176,240,0.4); }
+        .project-icon i { font-size: 40px; color: white; }
+        h1 { font-size: 2.5em; color: var(--accent); margin-bottom: 15px; }
+        h2 { font-size: 1.8em; color: var(--accent); margin-bottom: 15px; }
+        .subtitle { font-size: 1.2em; color: var(--text-faint); margin-bottom: 20px; }
+        .company-info { background: var(--bg-card2); border-left: 4px solid var(--accent); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .company-info p { color: var(--text-soft); margin-bottom: 10px; }
+        .company-info p:last-child { margin-bottom: 0; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; margin: 20px 0; }
+        .stat-box { background: var(--stat-bg); border: 1px solid var(--border); padding: 20px; border-radius: 10px; text-align: center; }
+        .stat-number { font-size: 2em; color: var(--accent); font-weight: bold; }
+        .stat-label  { color: var(--text-muted); margin-top: 5px; font-size: 0.88em; }
+        .project-header p { color: var(--text-soft); line-height: 1.8; }
+
+        /* CARDS */
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 30px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 15px; padding: 30px; box-shadow: 0 5px 20px var(--shadow-card); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(46,176,240,0.2); border-color: var(--border-hover); }
+        .full-width-card { grid-column: 1 / -1; }
+        .card h2 { color: var(--accent); margin-bottom: 20px; font-size: 1.5em; display: flex; align-items: center; gap: 10px; }
+        .card h3 { color: var(--accent); margin: 15px 0 10px 0; font-size: 1.1em; }
+        .card h2 i { font-size: 24px; }
+        .card ul { list-style: none; padding-left: 0; }
+        .card ul li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: start; gap: 10px; color: var(--text-soft); }
+        .card ul li:last-child { border-bottom: none; }
+        .card ul li i { color: var(--accent); margin-top: 5px; flex-shrink: 0; }
+        .card p { color: var(--text-soft); margin-bottom: 15px; }
+        .card p:last-child { margin-bottom: 0; }
+
+        /* TAGS */
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .tag { background: var(--tag-bg); color: var(--accent); border: 1px solid var(--border-hover); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; font-weight: 500; }
+        .tag:hover { background: rgba(46,176,240,0.3); box-shadow: 0 0 10px rgba(46,176,240,0.3); }
+
+        /* HIGHLIGHT */
+        .highlight-box { background: var(--bg-card2); border-left: 4px solid var(--accent); padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .highlight-box h3 { color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .highlight-box p { color: var(--text-soft); }
+        .highlight-box ul { list-style: none; padding: 0; }
+        .highlight-box ul li { padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; align-items: start; gap: 10px; color: var(--text-soft); }
+        .highlight-box ul li:last-child { border-bottom: none; }
+        .highlight-box ul li i { color: var(--accent); margin-top: 3px; flex-shrink: 0; }
+        .highlight-box ul li span { flex: 1; }
+
+        /* TABLE */
+        .dc-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .dc-table th, .dc-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        .dc-table th { background: var(--tag-bg); color: var(--accent); font-weight: bold; }
+        .dc-table td { color: var(--text-soft); }
+        .dc-table tr:hover { background: var(--table-hover); }
+        .badge-primary   { background: rgba(46,176,240,0.15); color: var(--accent); border: 1px solid var(--border-hover); padding: 3px 10px; border-radius: 10px; font-size: 0.8em; }
+        .badge-secondary { background: rgba(100,180,100,0.15); color: #6db56d; border: 1px solid rgba(100,180,100,0.3); padding: 3px 10px; border-radius: 10px; font-size: 0.8em; }
+
+        /* AD CONCEPTS */
+        .ad-concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin: 20px 0; }
+        .ad-concept-card { background: var(--bg-card2); border: 1px solid var(--border); padding: 22px; border-radius: 12px; text-align: center; }
+        .ad-concept-card:hover { background: rgba(46,176,240,0.1); border-color: var(--border-hover); transform: translateY(-3px); }
+        .ad-concept-icon { width: 54px; height: 54px; background: linear-gradient(135deg, #2eb0f0, #1a8bc7); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px auto; }
+        .ad-concept-icon i { font-size: 22px; color: white; }
+        .ad-concept-card h3 { color: var(--accent); font-size: 1em; margin-bottom: 8px; }
+        .ad-concept-card p  { color: var(--text-muted); font-size: 0.88em; line-height: 1.5; }
+
+        /* SITES */
+        .site-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin: 20px 0; }
+        .site-card { background: var(--bg-card2); border: 1px solid var(--border); padding: 20px; border-radius: 12px; position: relative; overflow: hidden; }
+        .site-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
+        .site-card.primary::before   { background: linear-gradient(90deg, #2eb0f0, #1a8bc7); }
+        .site-card.secondary::before { background: linear-gradient(90deg, #6db56d, #4a8e4a); }
+        .site-card:hover { transform: translateY(-3px); border-color: var(--border-hover); }
+        .site-card h3 { color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 1.05em; }
+        .site-card.secondary h3 { color: #6db56d; }
+        .site-card ul { list-style: none; padding: 0; }
+        .site-card ul li { padding: 5px 0; border-bottom: 1px solid var(--border); color: var(--text-soft); font-size: 0.9em; display: flex; align-items: center; gap: 8px; }
+        .site-card ul li:last-child { border-bottom: none; }
+        .site-card ul li i { color: var(--accent); font-size: 11px; }
+        .site-card.secondary ul li i { color: #6db56d; }
+
+        /* STATUS BADGES */
+        .status-row { display: flex; align-items: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 500; }
+        .status-badge.done    { background: rgba(100,200,100,0.15); color: #6dc86d; border: 1px solid rgba(100,200,100,0.3); }
+        .status-badge.wip     { background: rgba(240,180,46,0.15);  color: #f0c030; border: 1px solid rgba(240,180,46,0.3); }
+        .status-badge.planned { background: rgba(180,100,240,0.15); color: #b464f0; border: 1px solid rgba(180,100,240,0.3); }
+
+        /* DOC SECTION */
+        .documentation-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin: 30px 0; box-shadow: 0 10px 40px var(--shadow); }
+        .documentation-section h2 { text-align: center; margin-bottom: 10px; font-size: 2em; }
+        .documentation-section > p { text-align: center; color: var(--text-faint); margin-bottom: 10px; }
+
+        .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .doc-card { background: var(--bg-card2); border: 2px solid var(--border); border-radius: 15px; padding: 25px; position: relative; overflow: hidden; }
+        .doc-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #2eb0f0, #1a8bc7); transform: scaleX(0); transition: transform 0.3s ease; }
+        .doc-card:hover::before { transform: scaleX(1); }
+        .doc-card:hover { background: rgba(46,176,240,0.1); border-color: var(--border-hover); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(46,176,240,0.3); }
+        .doc-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .doc-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #2eb0f0 0%, #1a8bc7 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .doc-icon i { font-size: 24px; color: white; }
+        .doc-title       { font-size: 1.2em; color: var(--accent); font-weight: 600; }
+        .doc-description { color: var(--text-muted); font-size: 0.95em; margin-bottom: 20px; line-height: 1.5; }
+        .doc-links       { display: flex; flex-direction: column; gap: 10px; }
+        .doc-link { display: flex; align-items: center; gap: 10px; padding: 10px 15px; background: var(--link-bg); border: 1px solid var(--border); border-radius: 8px; color: var(--accent); text-decoration: none; font-size: 0.9em; }
+        .doc-link:hover { background: rgba(46,176,240,0.2); border-color: var(--border-hover); transform: translateX(5px); box-shadow: 0 0 15px rgba(46,176,240,0.2); }
+        .doc-link i { font-size: 14px; flex-shrink: 0; }
+        .doc-link span { flex: 1; }
+        .doc-badge { display: inline-block; padding: 4px 10px; background: var(--tag-bg); border: 1px solid var(--border-hover); border-radius: 12px; font-size: 0.75em; color: var(--accent); margin-top: 10px; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .project-header { padding: 30px 20px; }
+            .content-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .doc-grid { grid-template-columns: 1fr; }
+            .documentation-section { padding: 25px 15px; }
+            .theme-toggle { top: 12px; right: 12px; }
+            .ad-concept-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
+        <div class="toggle-track">
+            <i class="bx bx-moon icon-moon"></i>
+            <i class="bx bx-sun  icon-sun"></i>
+        </div>
+        <div class="toggle-thumb"></div>
+    </button>
+
+    <div class="container">
+
+        <a href="c:\Users\antoi\Downloads\test\index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Retour au portfolio
+        </a>
+
+        <!-- EN-TÊTE -->
+        <div class="project-header">
+            <div class="project-icon">
+                <i class="fas fa-sitemap"></i>
+            </div>
+            <h1>Active Directory</h1>
+            <p class="subtitle">Infrastructure d'annuaire — Déploiement multi-sites en entreprise</p>
+
+            <div class="company-info">
+                <p><strong>Contexte entreprise :</strong>L’entreprise Crédit Agricole évolue dans le secteur bancaire et financier. Elle compte un effectif d’environ 50 collaborateurs au sein de l’entité concernée.
+Son système d’information (SI) est structuré autour d’un réseau bancaire sécurisé, complété par un réseau privatif dédié à certains métiers spécifiques nécessitant des environnements de travail plus flexibles. Ce SI intègre des services d’authentification, de gestion des accès et des ressources informatiques, tout en respectant des exigences élevées en matière de sécurité, de confidentialité et de conformité réglementaire propres au secteur bancaire.
+Dans ce contexte, j’ai mis en place une infrastructure Active Directory afin de centraliser la gestion des identités et des accès, de renforcer le contrôle des utilisateurs et d’améliorer la sécurité globale du réseau privatif.</p>
+                <p><strong>Domaine AD :</strong> test.local &nbsp;|&nbsp; <strong>Niveau fonctionnel :</strong> Windows Server 2025 &nbsp;|&nbsp; <strong>Sites :</strong> Saint-Laurent (primaire) · Draguignan (secondaire)</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box"><div class="stat-number">2</div><div class="stat-label">Contrôleurs de domaine</div></div>
+                <div class="stat-box"><div class="stat-number">2</div><div class="stat-label">Sites AD</div></div>
+                <div class="stat-box"><div class="stat-number">5</div><div class="stat-label">Rôles FSMO</div></div>
+                <div class="stat-box"><div class="stat-number">11</div><div class="stat-label">GPOs de base</div></div>
+                <div class="stat-box"><div class="stat-number">2025</div><div class="stat-label">Forest Functional Level</div></div>
+            </div>
+        </div>
+
+        <!-- QU'EST-CE QUE L'ACTIVE DIRECTORY ? -->
+        <div class="card full-width-card">
+            <h2><i class="fas fa-question-circle"></i> Qu'est-ce que l'Active Directory ?</h2>
+            <p>
+                L'Active Directory (AD) est le service d'annuaire développé par Microsoft, intégré à Windows Server depuis 2000.
+                Il constitue la colonne vertébrale de la gestion des identités et des accès dans les environnements Windows d'entreprise.
+                Son rôle est de centraliser l'authentification, l'autorisation et la gestion de toutes les ressources du réseau.
+            </p>
+
+            <div class="ad-concept-grid">
+                <div class="ad-concept-card">
+                    <div class="ad-concept-icon"><i class="fas fa-lock"></i></div>
+                    <h3>Gestion des accès</h3>
+                    <p>Contrôle précis des droits sur les ressources (fichiers, imprimantes, applications) via des groupes et des GPOs.</p>
+                </div>
+                <div class="ad-concept-card">
+                    <div class="ad-concept-icon"><i class="fas fa-sliders-h"></i></div>
+                    <h3>Stratégies de groupe (GPO)</h3>
+                    <p>Application automatique de configurations et politiques de sécurité sur les postes et utilisateurs du domaine.</p>
+                </div>
+                <div class="ad-concept-card">
+                    <div class="ad-concept-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>DNS intégré</h3>
+                    <p>L'AD s'appuie sur le DNS pour la résolution de noms et la localisation des contrôleurs de domaine (SRV records).</p>
+                </div>
+                <div class="ad-concept-card">
+                    <div class="ad-concept-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Réplication multi-DC</h3>
+                    <p>Les modifications sont répliquées entre tous les DC pour assurer haute disponibilité et tolérance aux pannes.</p>
+                </div>
+                <div class="ad-concept-card">
+                    <div class="ad-concept-icon"><i class="fas fa-sitemap"></i></div>
+                    <h3>Structure hiérarchique (OU)</h3>
+                    <p>Les objets sont organisés en Unités d'Organisation reflétant la structure et les besoins de l'entreprise.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3><i class="fas fa-info-circle"></i> Composants clés</h3>
+                <ul>
+                    <li><i class="fas fa-server"></i><span><strong>Domain Controller (DC) :</strong> Serveur hébergeant AD DS, responsable de l'authentification Kerberos/NTLM.</span></li>
+                    <li><i class="fas fa-crown"></i><span><strong>Rôles FSMO :</strong> 5 rôles à maître unique (PDC Emulator, RID Master, Infrastructure Master, Schema Master, Domain Naming Master).</span></li>
+                    <li><i class="fas fa-folder-open"></i><span><strong>Unités d'Organisation (OU) :</strong> Conteneurs logiques pour déléguer l'administration et appliquer des GPOs ciblées.</span></li>
+                    <li><i class="fas fa-users"></i><span><strong>Groupes de sécurité :</strong> Regroupent les comptes pour l'attribution simplifiée des droits d'accès.</span></li>
+                    <li><i class="fas fa-globe"></i><span><strong>Sites AD :</strong> Représentent la topologie physique du réseau pour optimiser la réplication inter-sites.</span></li>
+                    <li><i class="fas fa-key"></i><span><strong>Kerberos v5 :</strong> Protocole d'authentification par tickets utilisé nativement par l'AD.</span></li>
+                </ul>
+            </div>
+
+            <div class="tech-tags">
+                <span class="tag">Windows Server 2025</span>
+                <span class="tag">AD DS</span>
+                <span class="tag">DNS</span>
+                <span class="tag">DHCP</span>
+                <span class="tag">Kerberos</span>
+                <span class="tag">GPO</span>
+                <span class="tag">FSMO</span>
+                <span class="tag">LDAP</span>
+                <span class="tag">PowerShell</span>
+            </div>
+        </div>
+
+        <div class="content-grid">
+
+            <!-- CONTEXTE ENTREPRISE -->
+            <div class="card full-width-card">
+                <h2><i class="fas fa-building"></i> Contexte de l'entreprise</h2>
+                <p>Décrivez ici votre entreprise, le contexte du déploiement AD et les besoins métier identifiés.</p>
+
+                <div class="company-info">
+                    <p><strong>Entreprise :</strong> Crédit Agricole / Secteur bancaire</p>
+                    <p><strong>Effectif :</strong> 50 utilisateurs répartis sur 2 sites — Saint-Laurent et Draguignan</p>
+                    <p><strong>Contexte SI :</strong> Initialement, le système d’information du Crédit Agricole ne disposait pas d’une gestion centralisée des identités et des accès sur le réseau privatif, ce qui entraînait un manque de contrôle des droits utilisateurs.
+Afin de corriger ces problématiques de sécurité, une infrastructure Active Directory a été mise en place pour centraliser la gestion des utilisateurs et sécuriser le système d’information.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3><i class="fas fa-bullseye"></i> Objectifs du déploiement</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i><span>Centraliser l'authentification des utilisateurs]</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Remplacer les comptes locaux par des comptes de domaine]</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Déployer des GPOs de sécurité conformes à la politique interne]</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Assurer la continuité via un DC secondaire sur site distant]</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Intégrer les postes Windows dans le domaine test.local]</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SITE SAINT-LAURENT -->
+            <div class="card">
+                <h2><i class="fas fa-map-marker-alt"></i> Saint-Laurent <small style="font-size:0.6em;opacity:0.7">Site primaire</small></h2>
+                <p>Siège principal — héberge les 4 rôles FSMO majeurs et les deux premiers DC.</p>
+                <div class="site-grid">
+                    <div class="site-card primary">
+                        <h3><i class="fas fa-server"></i> SL-DC01</h3>
+                        <ul>
+                            <li><i class="fas fa-crown"></i> PDC Emulator</li>
+                            <li><i class="fas fa-crown"></i> RID Master</li>
+                            <li><i class="fas fa-crown"></i> Schema Master</li>
+                            <li><i class="fas fa-crown"></i> Domain Naming Master</li>
+                            <li><i class="fas fa-globe"></i> DNS primaire</li>
+                            <li><i class="fas fa-network-wired"></i> DHCP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SITE DRAGUIGNAN -->
+            <div class="card">
+                <h2><i class="fas fa-map-marker-alt"></i> Draguignan <small style="font-size:0.6em;opacity:0.7">Site secondaire</small></h2>
+                <p>Site distant — héberge deux DC pour la haute disponibilité inter-sites.</p>
+                <div class="site-grid">
+                    <div class="site-card secondary">
+                        <h3><i class="fas fa-server"></i> DG-DC01</h3>
+                        <ul>
+                            <li><i class="fas fa-sync-alt"></i> DC secondaire inter-sites</li>
+                            <li><i class="fas fa-globe"></i> DNS local Draguignan</li>
+                            <li><i class="fas fa-network-wired"></i> DHCP local</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+             <!-- SITE MANAUSQUE -->
+            <div class="card">
+                <h2><i class="fas fa-map-marker-alt"></i> Manausque <small style="font-size:0.6em;opacity:0.7">Site a venir</small></h2>
+                <p>Potentiel evolution </p>
+                <div class="site-grid">
+                    <div class="site-card secondary">
+                        <h3><i class="fas fa-server"></i> DM-DC01</h3>
+                        <ul>
+                            <li><i class="fas fa-sync-alt"></i> A venir </li>
+                            <li><i class="fas fa-globe"></i>A venir</li>
+                            <li><i class="fas fa-network-wired"></i>A venir</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STRUCTURE OU -->
+            <div class="card full-width-card">
+                <h2><i class="fas fa-folder-open"></i> Structure des Unités d'Organisation (OU)</h2>
+                <p>La hiérarchie d'OU reflète l'organisation de l'entreprise et permet d'appliquer des GPOs ciblées à chaque niveau.</p>
+                <table class="dc-table">
+                    <thead>
+                        <tr><th>Unité d'Organisation</th><th>Contenu</th><th>GPOs appliquées</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><i class="fas fa-folder" style="color:var(--accent);margin-right:8px;"></i>test.local</td><td>Racine du domaine</td><td>Stratégies de domaine par défaut</td></tr>
+                        <tr><td><i class="fas fa-folder" style="color:var(--accent);margin-right:8px;"></i>OU=Utilisateurs</td><td>Comptes utilisateurs par service</td><td>Politique mdp, bureau, restrictions</td></tr>
+                        <tr><td><i class="fas fa-folder" style="color:var(--accent);margin-right:8px;"></i>OU=Ordinateurs</td><td>Postes Windows du domaine</td><td>Déploiement logiciels, config poste</td></tr>
+                        <tr><td><i class="fas fa-folder" style="color:var(--accent);margin-right:8px;"></i>OU=Serveurs</td><td>Serveurs membres du domaine</td><td>Audit, sécurité renforcée</td></tr>
+                        <tr><td><i class="fas fa-folder" style="color:var(--accent);margin-right:8px;"></i>OU=Groupes</td><td>Groupes de sécurité et de distribution</td><td>—</td></tr>
+                        <tr><td><i class="fas fa-folder" style="color:var(--accent);margin-right:8px;"></i>OU=Comptes de service</td><td>Comptes de service applicatifs</td><td>Restrictions de connexion interactive</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- FSMO + GPO -->
+            <div class="card">
+                <h2><i class="fas fa-crown"></i> Rôles FSMO</h2>
+                <p>Les 5 rôles FSMO distribués entre SL-DC01 et SL-DC02.</p>
+                <table class="dc-table">
+                    <thead><tr><th>Rôle FSMO</th><th>DC attribué</th></tr></thead>
+                    <tbody>
+                        <tr><td>Schema Master</td><td><span class="badge-primary">SL-DC01</span></td></tr>
+                        <tr><td>Domain Naming Master</td><td><span class="badge-primary">SL-DC01</span></td></tr>
+                        <tr><td>PDC Emulator</td><td><span class="badge-primary">SL-DC01</span></td></tr>
+                        <tr><td>RID Master</td><td><span class="badge-primary">SL-DC01</span></td></tr>
+                        <tr><td>Infrastructure Master</td><td><span class="badge-primary">SL-DC01</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-sliders-h"></i> GPOs de base (11)</h2>
+                <p>4 catégories couvrant sécurité, postes, utilisateurs et serveurs.</p>
+                <ul>
+                    <li><i class="fas fa-shield-alt"></i>Politique de mot de passe (complexité, expiration)</li>
+                    <li><i class="fas fa-shield-alt"></i>Verrouillage de compte (seuil, durée)</li>
+                    <li><i class="fas fa-desktop"></i>Restriction panneau de configuration</li>
+                    <li><i class="fas fa-user-lock"></i>Restriction Remote Desktop Protocole</li>
+                    <li><i class="fas fa-user-lock"></i>Interdiction des périphériques USB</li>
+                    <li><i class="fas fa-server"></i>Audit des événements de sécurité</li>
+                    <li><i class="fas fa-server"></i>Configuration pare-feu Windows</li>
+                    <li><i class="fas fa-server"></i>Windows Update (WSUS)</li>
+                    <li><i class="fas fa-map-marker-alt"></i>Paramètres spécifiques par site</li>
+                </ul>
+            </div>
+
+            <!-- PLAN DE CONTINUITÉ -->
+            <div class="card full-width-card">
+                <h2><i class="fas fa-heartbeat"></i> Plan de continuité & Sauvegarde</h2>
+                <p>Règle 3-2-1 appliquée : 3 copies, 2 supports différents, 1 copie hors-site. Rétention : 7 jours / 4 semaines / 1 mois.</p>
+
+                <div class="highlight-box">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Scénarios de panne couverts</h3>
+                    <ul>
+                        <li><i class="fas fa-times-circle"></i><span>Panne de SL-DC01 → transfert des FSMO manuel</span></li>
+                        <li><i class="fas fa-times-circle"></i><span>Perte du site Saint-Laurent → les DC de Draguignan assurent l'authentification locale</span></li>
+                        <li><i class="fas fa-times-circle"></i><span>Corruption NTDS → restauration depuis sauvegarde Veeam Backup</span></li>
+                        <li><i class="fas fa-times-circle"></i><span>Ransomware → snapshot quotidien + rétention de backup 7 jours</span></li>
+                        <li><i class="fas fa-times-circle"></i><span>Coupure réseau inter-sites → chaque site fonctionne en autonomie avec son DC local</span></li>
+                    </ul>
+                </div>
+
+                <div class="tech-tags">
+                    <span class="tag">Veeam Backup</span>
+                    <span class="tag">Snapshots quotidiens</span>
+                    <span class="tag">Rétention 7j / 4sem / 1mois</span>
+                    <span class="tag">Règle 3-2-1</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION DOCUMENTATION -->
+        <div class="documentation-section">
+            <h2><i class="fas fa-folder-open" style="margin-right:12px;"></i>Documentation</h2>
+            <p>Procédures techniques, guides de configuration et livrables du déploiement Active Directory.</p>
+
+            <div class="doc-grid">
+
+                <div class="doc-card">
+                    <div class="doc-header">
+                        <div class="doc-icon"><i class="fas fa-server"></i></div>
+                        <div class="doc-title">Installation & Promotion DC</div>
+                    </div>
+                    <div class="doc-description">Création du premier contrôleur de domaine, promotion en DC et configuration initiale du domaine test.local.</div>
+                    <div class="doc-links">
+                        <a href="Creation d'un Active Directory.pdf" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Création d'un Active Directory (DC01)</span>
+                        </a>
+                        <a href="Ajouter un deuxième DC au domaine.pdf" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Ajout d'un deuxième DC au domaine</span>
+                        </a>
+                    </div>
+                    <span class="doc-badge">Installation</span>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-header">
+                        <div class="doc-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <div class="doc-title">Planification — Phase 1</div>
+                    </div>
+                    <div class="doc-description">Documentation complète : topologie, FSMO, OU, GPOs, plan de continuité et stratégie de sauvegarde.</div>
+                    <div class="doc-links">
+                        <a href="#" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Plan de déploiement AD Phase 1</span>
+                        </a>
+                    </div>
+                    <span class="doc-badge">Planification</span>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-header">
+                        <div class="doc-icon"><i class="fas fa-globe"></i></div>
+                        <div class="doc-title">DNS & DHCP intégrés</div>
+                    </div>
+                    <div class="doc-description">Configuration du DNS intégré AD (zones, SRV records, transfert) et du service DHCP.</div>
+                    <div class="doc-links">
+                        <a href="Création du DNS.pdf" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Création du DNS</span>
+                        </a>
+                        <a href="Configuration DHCP.pdf" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Configuration du serveur DHCP</span>
+                        </a>
+                    </div>
+                    <span class="doc-badge">Services</span>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-header">
+                        <div class="doc-icon"><i class="fas fa-sliders-h"></i></div>
+                        <div class="doc-title">Stratégies de Groupe (GPO)</div>
+                    </div>
+                    <div class="doc-description">Création et liaison des GPOs de sécurité, de bureau, de déploiement logiciels et de configuration réseau.</div>
+                    <div class="doc-links">
+                        <a href="#" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Configuration des GPOs de sécurité</span>
+                        </a>
+                        <a href="#" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Déploiement logiciels via GPO</span>
+                        </a>
+                    </div>
+                    <span class="doc-badge">GPO</span>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-header">
+                        <div class="doc-icon"><i class="fas fa-sync-alt"></i></div>
+                        <div class="doc-title">Sites AD & Réplication</div>
+                    </div>
+                    <div class="doc-description">Configuration des sites (Saint-Laurent, Draguignan), liens de sites et planification de la réplication inter-sites.</div>
+                    <div class="doc-links">
+                        <a href="#" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Configuration des sites et liens de sites</span>
+                        </a>
+                        <a href="#" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Vérification de la réplication AD</span>
+                        </a>
+                    </div>
+                    <span class="doc-badge">Réplication</span>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-header">
+                        <div class="doc-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="doc-title">Sauvegarde & Continuité</div>
+                    </div>
+                    <div class="doc-description">Procédures de sauvegarde des DC via Proxmox Backup Server, restauration NTDS et tests de continuité.</div>
+                    <div class="doc-links">
+                        <a href="#" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Sauvegarde des contrôleurs de domaine</span>
+                        </a>
+                        <a href="#" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span>Procédure de restauration AD</span>
+                        </a>
+                    </div>
+                    <span class="doc-badge">Continuité</span>
+                </div>
+
+            </div>
+        </div>
+
+        <a href="c:\Users\antoi\Downloads\test\index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Retour au portfolio
+        </a>
+
+    </div>
+
+    <script>
+        const btn  = document.getElementById('themeToggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+        }
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href === '#') {
+                link.addEventListener('click', e => e.preventDefault());
+            }
+        });
+    </script>
+
+</body>
+</html>
