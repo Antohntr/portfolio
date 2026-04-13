@@ -536,7 +536,7 @@
 
     <div class="container">
 
-        <a href="c:\Users\antoi\Downloads\test\index.html" class="back-btn">
+        <a href="index.html" class="back-btn">
             <i class="fas fa-arrow-left"></i>
             Retour au portfolio
         </a>
@@ -738,8 +738,8 @@
                         <ul>
                             <li><i class="fas fa-chevron-right"></i><span>Virtualisation complète du parc serveurs</span></li>
                             <li><i class="fas fa-chevron-right"></i><span>Configuration pare-feu et règles de filtrage</span></li>
-                            <li><i class="fas fa-chevron-right"></i><span>Implémentation IDS avec IA</span></li>
-                            <li><i class="fas fa-chevron-right"></i><span>Sauvegardes automatiques vers NAS RAID</span></li>
+                            <li><i class="fas fa-chevron-right"></i><span>Implémentation IDS</span></li>
+                            <li><i class="fas fa-chevron-right"></i><span>Sauvegardes automatiques vers serveur de sauvegarde</span></li>
                         </ul>
                     </div>
                 </div>
@@ -774,10 +774,6 @@
                     <div class="doc-header"><div class="doc-icon"><i class="fas fa-network-wired"></i></div><div class="doc-title">Architecture Réseau</div></div>
                     <div class="doc-description">Documentation complète sur l'architecture réseau, les VLANs, le routage et la topologie du projet.</div>
                     <div class="doc-links">
-                        <a href="routeur.pdf"                           class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration du Routeur</span></a>
-                        <a href="switch.pdf"                            class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration d'un Switch de niveau 2</span></a>
-                        <a href="L3.pdf"                                class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration d'un Switch de niveau 3</span></a>
-                        <a href="IP.pdf"                                class="doc-link"><i class="fas fa-file-pdf"></i><span>Plan d'adressage IP</span></a>
                         <a href="Configuration du protocole VTP.pdf"   class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration du protocole VTP</span></a>
                         <a href="Configuration du Routage Dynamique RIP.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration du Routage Dynamique RIP</span></a>
                     </div>
@@ -789,7 +785,6 @@
                     <div class="doc-header"><div class="doc-icon"><i class="fas fa-shield-alt"></i></div><div class="doc-title">Sécurité & Firewall</div></div>
                     <div class="doc-description">Documentation des règles de sécurité, ACL, configuration du pare-feu Stormshield et accès distants.</div>
                     <div class="doc-links">
-                        <a href="ACL.pdf"                                           class="doc-link"><i class="fas fa-file-pdf"></i><span>Règles ACL</span></a>
                         <a href="Configuration du Firewall Stormshield.pdf"   class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration Firewall Stormshield</span></a>
                         <a href="Configuration du protocole SSH sur un switch Cisco de niveau 2.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration SSH sur Switch Cisco</span></a>
                         <a href="Configuration d’un utilisateur et mot de passe sur un équipement Cisco.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Utilisateur & mot de passe sur équipement Cisco</span></a>
@@ -816,23 +811,10 @@
                     <div class="doc-links">
                         <a href="Création du DNS.pdf"                              class="doc-link"><i class="fas fa-file-pdf"></i><span>Création du DNS</span></a>
                         <a href="Installation du service WEB sur Windows Server 2025.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Installation du service Web (Windows Server 2025)</span></a>
-                        <a href="Procédure Serveur MAIL.pdf"                       class="doc-link"><i class="fas fa-file-pdf"></i><span>Procédure Serveur Mail</span></a>
                         <a href="Configuration du Serveur de fichier.pdf"          class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration du Serveur de Fichier</span></a>
                         <a href="Configuration DHCP.pdf"          class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration du Serveur DHCP</span></a>                    
                     </div>
                     <span class="doc-badge">Services</span>
-                </div>
-
-                <!-- ── GLPI & Base de données ── -->
-                <div class="doc-card">
-                    <div class="doc-header"><div class="doc-icon"><i class="fas fa-database"></i></div><div class="doc-title">GLPI & Base de données</div></div>
-                    <div class="doc-description">Installation et configuration de GLPI, base de données et gestion du parc informatique.</div>
-                    <div class="doc-links">
-                        <a href="Procedure Installation Base de donnée GLPI.pdf"   class="doc-link"><i class="fas fa-file-pdf"></i><span>Installation Base de données GLPI</span></a>
-                        <a href="Procedure BDD.pdf"                                class="doc-link"><i class="fas fa-file-pdf"></i><span>Procédure Base de données</span></a>
-                        <a href="Procedure GLPI.pdf"                               class="doc-link"><i class="fas fa-file-pdf"></i><span>Procédure GLPI</span></a>
-                    </div>
-                    <span class="doc-badge">Ticketing</span>
                 </div>
 
                 <!-- ── Équipements Cisco ── -->
@@ -860,12 +842,16 @@
 
                 <!-- ── Infrastructure & Stockage ── -->
                 <div class="doc-card">
-                    <div class="doc-header"><div class="doc-icon"><i class="fas fa-hdd"></i></div><div class="doc-title">Infrastructure & Stockage</div></div>
-                    <div class="doc-description">Configuration du RAID et redondance du stockage pour la haute disponibilité des serveurs.</div>
+                    <div class="doc-header"><div class="doc-icon"><i class="fas fa-hdd"></i></div><div class="doc-title">Virtualisation</div></div>
+                    <div class="doc-description">Configuration des VM et du RAID</div>
                     <div class="doc-links">
-                        <a href="Configuration RAID 5 sur un Serveur.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration RAID 5 sur un Serveur</span></a>
+                        <a href="Création d’une clé bootable Proxmox.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Création d’une clé bootable Proxmox</span></a>
+                        <a href="Rajouter un disque sur proxmox.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Rajouter un disque sur Proxmox</span></a>
+                        <a href="Création d'une VM sur Proxmox.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Création d'une VM sur Proxmox</span></a>
+                        <a href="Installation pilotes VirtIO.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Installation pilotes VirtIO</span></a>
+                        <a href="Configuration RAID 5 sur un Serveur.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Configuration RAID 5 sur un Serveur</span></a>                   
                     </div>
-                    <span class="doc-badge">Infrastructure</span>
+                    <span class="doc-badge">Proxmox</span>
                 </div>
 
                 <!-- ── Cahier des Charges ── -->
@@ -884,8 +870,8 @@
                     <div class="doc-header"><div class="doc-icon"><i class="fas fa-file-contract"></i></div><div class="doc-title">Proxmox Backup Serveur</div></div>
                     <div class="doc-description">Configuration de Proxmox Backup Serveur et utilisation.</div>
                     <div class="doc-links">
-                        <a href="Projet_GNEX.pdf"        class="doc-link"><i class="fas fa-file-pdf"></i><span>Projet GNEX</span></a>
-                        <a href="Reponse_appel_offre.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Réponse à l'appel d'offres</span></a>
+                        <a href=""        class="doc-link"><i class="fas fa-file-pdf"></i><span>A venir</span></a>
+                        <a href="" class="doc-link"><i class="fas fa-file-pdf"></i><span>A venir</span></a>
                     </div>
                     <span class="doc-badge">Projet</span>
                 </div>
@@ -895,8 +881,8 @@
                     <div class="doc-header"><div class="doc-icon"><i class="fas fa-file-contract"></i></div><div class="doc-title">Serveur d'impression</div></div>
                     <div class="doc-description">Configuration du serveur d'impression et utilisation.</div>
                     <div class="doc-links">
-                        <a href="Projet_GNEX.pdf"        class="doc-link"><i class="fas fa-file-pdf"></i><span>Projet GNEX</span></a>
-                        <a href="Reponse_appel_offre.pdf" class="doc-link"><i class="fas fa-file-pdf"></i><span>Réponse à l'appel d'offres</span></a>
+                        <a href=""        class="doc-link"><i class="fas fa-file-pdf"></i><span>A venir</span></a>
+                        <a href="" class="doc-link"><i class="fas fa-file-pdf"></i><span>A venir</span></a>
                     </div>
                     <span class="doc-badge">Projet</span>
                 </div>
@@ -930,7 +916,7 @@
     </script>
     <Script>
         document.querySelectorAll("a").forEach(link => {
-
+ir
         const href = link.getAttribute("href");
 
         if (

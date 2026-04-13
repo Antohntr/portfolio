@@ -325,11 +325,12 @@ Afin de corriger ces problématiques de sécurité, une infrastructure Active Di
             <!-- SITE SAINT-LAURENT -->
             <div class="card">
                 <h2><i class="fas fa-map-marker-alt"></i> Saint-Laurent <small style="font-size:0.6em;opacity:0.7">Site primaire</small></h2>
-                <p>Siège principal — héberge les 4 rôles FSMO majeurs et les deux premiers DC.</p>
+                <p>Siège principal — héberge les 5 rôles FSMO majeurs et les deux premiers DC.</p>
                 <div class="site-grid">
                     <div class="site-card primary">
                         <h3><i class="fas fa-server"></i> SL-DC01</h3>
                         <ul>
+                            <li><i class="fas fa-crown"></i> Infrastructure Master</li>
                             <li><i class="fas fa-crown"></i> PDC Emulator</li>
                             <li><i class="fas fa-crown"></i> RID Master</li>
                             <li><i class="fas fa-crown"></i> Schema Master</li>
@@ -409,7 +410,7 @@ Afin de corriger ces problématiques de sécurité, une infrastructure Active Di
             </div>
 
             <div class="card">
-                <h2><i class="fas fa-sliders-h"></i> GPOs de base (11)</h2>
+                <h2><i class="fas fa-sliders-h"></i> GPOs de base (9)</h2>
                 <p>4 catégories couvrant sécurité, postes, utilisateurs et serveurs.</p>
                 <ul>
                     <li><i class="fas fa-shield-alt"></i>Politique de mot de passe (complexité, expiration)</li>
@@ -460,106 +461,106 @@ Afin de corriger ces problématiques de sécurité, une infrastructure Active Di
                 <div class="doc-card">
                     <div class="doc-header">
                         <div class="doc-icon"><i class="fas fa-server"></i></div>
-                        <div class="doc-title">Installation & Promotion DC</div>
+                        <div class="doc-title"></div>
                     </div>
-                    <div class="doc-description">Création du premier contrôleur de domaine, promotion en DC et configuration initiale du domaine test.local.</div>
+                    <div class="doc-description"></div>
                     <div class="doc-links">
-                        <a href="Creation d'un Active Directory.pdf" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Création d'un Active Directory (DC01)</span>
+                        <a href="" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
-                        <a href="Ajouter un deuxième DC au domaine.pdf" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Ajout d'un deuxième DC au domaine</span>
+                        <a href="" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                     </div>
-                    <span class="doc-badge">Installation</span>
+                    <span class="doc-badge"></span>
                 </div>
 
                 <div class="doc-card">
                     <div class="doc-header">
                         <div class="doc-icon"><i class="fas fa-clipboard-list"></i></div>
-                        <div class="doc-title">Planification — Phase 1</div>
+                        <div class="doc-title"></div>
                     </div>
-                    <div class="doc-description">Documentation complète : topologie, FSMO, OU, GPOs, plan de continuité et stratégie de sauvegarde.</div>
+                    <div class="doc-description"></div>
                     <div class="doc-links">
                         <a href="#" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Plan de déploiement AD Phase 1</span>
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                     </div>
-                    <span class="doc-badge">Planification</span>
+                    <span class="doc-badge"></span>
                 </div>
 
                 <div class="doc-card">
                     <div class="doc-header">
                         <div class="doc-icon"><i class="fas fa-globe"></i></div>
-                        <div class="doc-title">DNS & DHCP intégrés</div>
+                        <div class="doc-title"></div>
                     </div>
-                    <div class="doc-description">Configuration du DNS intégré AD (zones, SRV records, transfert) et du service DHCP.</div>
+                    <div class="doc-description"></div>
                     <div class="doc-links">
-                        <a href="Création du DNS.pdf" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Création du DNS</span>
+                        <a href="" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
-                        <a href="Configuration DHCP.pdf" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Configuration du serveur DHCP</span>
+                        <a href="" class="doc-link">
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                     </div>
-                    <span class="doc-badge">Services</span>
+                    <span class="doc-badge"></span>
                 </div>
 
                 <div class="doc-card">
                     <div class="doc-header">
                         <div class="doc-icon"><i class="fas fa-sliders-h"></i></div>
-                        <div class="doc-title">Stratégies de Groupe (GPO)</div>
+                        <div class="doc-title"></div>
                     </div>
-                    <div class="doc-description">Création et liaison des GPOs de sécurité, de bureau, de déploiement logiciels et de configuration réseau.</div>
+                    <div class="doc-description"></div>
                     <div class="doc-links">
                         <a href="#" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Configuration des GPOs de sécurité</span>
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                         <a href="#" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Déploiement logiciels via GPO</span>
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                     </div>
-                    <span class="doc-badge">GPO</span>
+                    <span class="doc-badge"></span>
                 </div>
 
                 <div class="doc-card">
                     <div class="doc-header">
                         <div class="doc-icon"><i class="fas fa-sync-alt"></i></div>
-                        <div class="doc-title">Sites AD & Réplication</div>
+                        <div class="doc-title"></div>
                     </div>
-                    <div class="doc-description">Configuration des sites (Saint-Laurent, Draguignan), liens de sites et planification de la réplication inter-sites.</div>
+                    <div class="doc-description"></div>
                     <div class="doc-links">
                         <a href="#" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Configuration des sites et liens de sites</span>
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                         <a href="#" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Vérification de la réplication AD</span>
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                     </div>
-                    <span class="doc-badge">Réplication</span>
+                    <span class="doc-badge"></span>
                 </div>
 
                 <div class="doc-card">
                     <div class="doc-header">
                         <div class="doc-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="doc-title">Sauvegarde & Continuité</div>
+                        <div class="doc-title"></div>
                     </div>
-                    <div class="doc-description">Procédures de sauvegarde des DC via Proxmox Backup Server, restauration NTDS et tests de continuité.</div>
+                    <div class="doc-description"></div>
                     <div class="doc-links">
                         <a href="#" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Sauvegarde des contrôleurs de domaine</span>
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                         <a href="#" class="doc-link">
-                            <i class="fas fa-file-pdf"></i><span>Procédure de restauration AD</span>
+                            <i class="fas fa-file-pdf"></i><span></span>
                         </a>
                     </div>
-                    <span class="doc-badge">Continuité</span>
+                    <span class="doc-badge"></span>
                 </div>
 
             </div>
         </div>
 
-        <a href="c:\Users\antoi\Downloads\test\index.html" class="back-btn">
+        <a href="index.html" class="back-btn">
             <i class="fas fa-arrow-left"></i>
             Retour au portfolio
         </a>
